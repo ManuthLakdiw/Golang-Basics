@@ -26,4 +26,14 @@ func main() {
 	// pointers memory address
 	fmt.Printf("address of ptr is: %d\n", &ptr)
 
+	demo()
+
+	valForIncrement := 10
+	increment(&valForIncrement)
+	fmt.Printf("value of valForIncrement is: %d\n", valForIncrement)
+
+	valForSetZero := 10
+	setZero(&valForSetZero)
+	fmt.Printf("value of valForSetZero is: %d\n", valForSetZero)
+
 }
