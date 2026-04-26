@@ -18,6 +18,12 @@ func main() {
     a, b := swap("Hello", "World")
     fmt.Println("Swapped:", a, b) // Output: Swapped: World Hello
 
+		// Variadic Functions
+    fmt.Println("Sum of 1, 2, 3:", sumAll(1, 2, 3)) // Output: 6
+    fmt.Println("Sum of 10, 20:", sumAll(10, 20))   // Output: 30
+
+	
+
 
 }
 
@@ -38,4 +44,15 @@ func displayMessageWithParam(name string) {
 
 func swap(x string, y string) (string, string) {
     return y, x
+}
+
+
+// variadic functions
+
+func sumAll(numbers ...int) int {
+    total := 0
+    for _, num := range numbers {
+        total += num
+    }
+    return total
 }
