@@ -28,6 +28,12 @@ func main() {
 	}
 	fmt.Println("Anonymous Sum:", addAnonymous(4, 5)) // Output: 9
 
+	// Closures
+	counter := createCounter()
+	fmt.Println("Counter:", counter()) // Output: 1
+	fmt.Println("Counter:", counter()) // Output: 2
+	fmt.Println("Counter:", counter()) // Output: 3
+
 }
 
 func displayMessage() {
@@ -57,3 +63,15 @@ func sumAll(numbers ...int) int {
 	}
 	return total
 }
+
+
+// Closures
+
+func createCounter() func() int {
+    count := 0
+    return func() int {
+        count++
+        return count
+    }
+}
+
