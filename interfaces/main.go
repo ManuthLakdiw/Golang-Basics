@@ -33,6 +33,27 @@ func PrintArea(s Shape) {
     fmt.Println("Area is:", s.Area())
 }
 
+
+
+// interface compostion
+type Reader interface {
+    Read() string
+}
+
+type Writer interface {
+    Write(data string)
+}
+
+// Interface Composition
+// අර පරණ දෙක එකට එකතු කරලා "ReadWriter" කියලා අලුත් නීති පොතක් හැදුවා!
+type ReadWriter interface {
+    Reader
+    Writer
+}
+
+
+
+
 func main() {
     rect := Rectangle{Width: 10, Height: 5}
     circ := Circle{Radius: 7}
@@ -41,4 +62,5 @@ func main() {
     // Go Compiler එක බලනවා "rect ගාව Area() තියෙනවද? ඔව්! එහෙනම් එයා Shape කෙනෙක්."
     PrintArea(rect) // වැඩ කරනවා!
     PrintArea(circ) // වැඩ කරනවා!
+
 }
