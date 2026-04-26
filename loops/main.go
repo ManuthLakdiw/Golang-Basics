@@ -17,5 +17,8 @@ func main() {
 		number--
 	}
 
-	
+	// infinite loop
+	for {
+		fmt.Printf("my name is %s and i am %v years old\n", "Manuth", 19)
+	}
 }
