@@ -63,4 +63,34 @@ func main() {
     PrintArea(rect) // වැඩ කරනවා!
     PrintArea(circ) // වැඩ කරනවා!
 
+	err := withdrawal(10, 5)
+	if err != nil {
+		fmt.Println(err)
+	}
+	
+
+
 }
+
+func withdrawal(amount float64, balance float64) error {
+	if amount > balance {
+		return InvalidWithdrawalError{
+			Amount:      amount,
+			Balance:     balance,
+			Description: "Insufficient balance",
+		}
+	}
+	return nil
+}
+
+// custom errors
+type InvalidWithdrawalError struct {
+	Amount      float64
+	Balance     float64
+	Description string
+}
+
+func (e InvalidWithdrawalError) Error() string {
+	return fmt.Sprintf("Error: %.2f withdrawal failed. Insufficient balance: %.2f", e.Amount, e.Balance)
+}
+
