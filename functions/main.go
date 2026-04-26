@@ -14,6 +14,10 @@ func main() {
 
 	displayMessageWithParam("John") // John තමයි argument
 
+		// Multiple return Values
+    a, b := swap("Hello", "World")
+    fmt.Println("Swapped:", a, b) // Output: Swapped: World Hello
+
 
 }
 
@@ -27,4 +31,11 @@ func add(x int, y int) int {
 
 func displayMessageWithParam(name string) {
 	fmt.Println("Hello,", name, "Welcome to Functions!")
+}
+
+
+//// Multiple return Values
+
+func swap(x string, y string) (string, string) {
+    return y, x
 }
