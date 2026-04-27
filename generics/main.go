@@ -1,6 +1,8 @@
-package main	
+package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // normal function without generics
 func addInt(a int, b int) int {
@@ -24,6 +26,20 @@ func PrintSlice[T any](items []T) {
 // Box කියන Struct එක ඇතුළේ Content කියන Variable එකට එන්නේ අන්න ඒ T Type එකයි.
 type Box[T any] struct {
     Content T
+}
+
+
+// type constaints
+// 1. Constraint එකක් විදිහට Interface එකක් හදනවා.
+// මෙයින් කියන්නේ: "Number කෙනෙක් වෙන්න නම් අනිවාර්යයෙන්ම int හෝ float64 වෙන්න ඕනේ"
+type Number interface {
+    int | float64
+}
+
+// 2. Generic Function එක ලිවීම
+// [T Number] කියන්නේ: "T කියන්නේ අනිවාර්යයෙන්ම 'Number' එකේ තියෙන ජාතියක් වෙන්න ඕනේ!"
+func Add[T Number](a T, b T) T {
+    return a + b // දැන් Go Compiler එක දන්නවා මේවා අනිවාර්යයෙන්ම එකතු කරන්න පුළුවන් අංක කියලා.
 }
 
 func main() {
@@ -55,6 +71,13 @@ func main() {
     // වැරදි දෙයක් දැම්මොත්?
     // intBox.Content = "Hello" -> ERROR! Compile වෙන්නෙම නැහැ. (100% Type Safe!)
 
+
+
+	// demo type constraints
+	fmt.Println(Add(10, 20))       // Output: 30
+    fmt.Println(Add(5.5, 2.2))     // Output: 7.7
+
+    // fmt.Println(Add("A", "B"))  // ERROR! String කියන්නේ Number එකක් නෙවෙයි.
 
 		
 }
