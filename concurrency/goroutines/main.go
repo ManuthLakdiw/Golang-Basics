@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -14,6 +15,10 @@ func printNumbers(name string) {
 }
 
 func main() {
+
+	runtime.GOMAXPROCS(2)
+	fmt.Println("Number of Goroutines: ", runtime.NumGoroutine())
+
 	// සාමාන්‍ය විදිහට Call කිරීම (Sequential)
 	// මේක ඉවර වෙනකම් ඊළඟ පේළියට යන්නේ නැහැ.
 	printNumbers("Normal Task")
@@ -23,6 +28,8 @@ func main() {
 	// Main function එක ඊළඟ පේළියට ක්ෂණිකවම යනවා.
 	go printNumbers("Goroutine A")
 	go printNumbers("Goroutine B")
+
+	fmt.Println("Number of Goroutines: ", runtime.NumGoroutine())
 
 	time.Sleep(2 * time.Second)
 }
